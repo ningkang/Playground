@@ -1,2 +1,2 @@
 # Playground
-Playground for experiments
+Playground for experiments and fun
