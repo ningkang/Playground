@@ -24,7 +24,7 @@ void print_letters(char arg[])
 
 		if(can_print_it(ch))
 		{
-			printf("'%c' == %d\n", ch, ch);
+			printf("'%c' == %d ", ch, ch);
 		}
 	}
 
@@ -38,7 +38,7 @@ int can_print_it(char ch)
 
 int main(int argc, char *argv[])
 {
-	print_arguments(argc, argv)
+	print_arguments(argc, argv);
 
 	return 0;
 }
