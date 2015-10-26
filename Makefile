@@ -3,7 +3,7 @@ CC = cc
 #compiler options
 CFLGAS=-Wall -g
 LDFLAGS=
-SOURCES= ex7.c
+SOURCES= ex8.c
 OBJECTS=$(SOURCES)
 EXECUTABLE=hello
 
