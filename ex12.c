@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 	{
 		printf("You only have one argument. You suck.\n");
 	}
-	else if (argc > 1 && argc << 4)
+	else if (argc > 1 && argc < 4)
 	{
 		printf("Here's your argument:\n");
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		printf(""You have too many arguments. You suck"\n");
+		printf("You have too many arguments. You suck\n");
 	}
 	
 	return 0;

@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	}
 
 	// let's make our own array of strings
-	char **states = {
+	char *states[] = {
 		"California", "Oregon", 
 		"Washington", "Texas"
 	};
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	i = 0;
 	while (i < num_states)
 	{
-		printf("state %d: %s\n", i, state[i]);
+		printf("state %d: %s\n", i, states[i]);
 
 		i++;
 	}
