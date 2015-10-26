@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	{
 		char letter = argv[1][i];
 
-		switch (letter):
+		switch (letter)
 		{
 			case 'a':
 			case 'A':
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 				break;
 			case 'e':
 			case 'E':
-				printf("%d: 'b' or 'B'\n", i);
+				printf("%d: 'e' or 'E'\n", i);
 				break;
 			case 'i':
 			case 'I':
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 				break;
 			case 'y':
 			case 'Y':
-				printf("%d: 'y' or 'Y'\n", );
+				printf("%d: 'y' or 'Y'\n", i);
 				break;
 
 			default:
