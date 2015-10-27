@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <error.h>
+#include <errno.h>
 #include <string.h>
 
 // our old friend die from ex17
@@ -20,7 +20,7 @@ void die (const char *message)
 typedef int (*compare_db)(int a, int b);
 
 // a classic bubble sort function that uses that compare_db to do the sorting
-int *bubble_sort(int *numbers, int count, compare_cb cmp)
+int *bubble_sort(int *numbers, int count, compare_db cmp)
 {
 	int temp = 0;
 	int i = 0;
