@@ -8,12 +8,12 @@ OBJECTS=$(SOURCES)
 EXECUTABLE=hello
 
 all: $(SOURCES) $(EXECUTABLE)
+#all: ex19
+
+#ex19: object.o
 
 $(EXECUTABLE):
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
-
-#.c:
-#	$(CC) $(CFLAGS) $< -o $@
 
 clean:
 	rm -f $(EXECUTABLE)
