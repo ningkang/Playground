@@ -10,8 +10,8 @@ void Object_destroy(void *self)
 
 	if(obj)
 	{
-		if(obj->description) free(ojb->description);
-		free(ojb);
+		if(obj->description) free(obj->description);
+		free(obj);
 	}
 }
 

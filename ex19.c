@@ -9,7 +9,7 @@ int Monster_attack(void *self, int damage)
 {
 	Monster *monster = self;
 
-	printf("You attack %s!\n", monster->_description);
+	printf("You attack %s!\n", monster->_(description));
 
 	monster->hit_points -= damage;
 
@@ -33,14 +33,14 @@ int Monster_init(void *self)
 }
 
 Object MonsterProto = {
-	.init = Monster_init;
-	.attack = Monster_attack;
+	.init = Monster_init,
+	.attack = Monster_attack
 };
 
 void *Room_move(void *self, Direction direction)
 {
 	Room *room = self;
-	Room *next = NULL:
+	Room *next = NULL;
 
 	if(direction == NORTH && room->north)
 	{
@@ -76,9 +76,26 @@ void *Room_move(void *self, Direction direction)
 	return next;
 }
 
+int Room_attack(void *self, int damage)
+{
+	Room *room = self;
+	Monster *monster = room->bad_guy;
+
+	if(monster)
+	{
+		monster->_(attack)(monster, damage);
+		return 1;
+	}
+	else
+	{
+		printf("You flail in the air at nothing. Idiot.\n");
+		return 0;
+	}
+}
+
 Object RoomProto = {
-	.move = Room_move;
-	.attack = Room_attack;
+	.move = Room_move,
+	.attack = Room_attack
 };
 
 void *Map_move(void *self, Direction direction)
@@ -100,7 +117,7 @@ void *Map_move(void *self, Direction direction)
 int Map_attack(void *self, int damage)
 {
 	Map* map = self;
-	Room *locaion = map->location;
+	Room *location = map->location;
 
 	return location->_(attack)(location, damage);
 }
@@ -126,20 +143,20 @@ int Map_init(void *self)
 	throne->east = kitchen;
 	throne->south = hall;
 
-	areana->east = throne;
+	arena->east = throne;
 	kitchen->west = throne;
 
 	// start the map and the character off in the hall
 	map->start = hall;
-	map->locaiton = hall;
+	map->location = hall;
 
 	return 1;
 }
 
 Object MapProto = {
-	.init = Map_init;
-	.move = Map_move;
-	.attack = Map_attack;
+	.init = Map_init,
+	.move = Map_move, 
+	.attack = Map_attack
 };
 
 int process_input(Map *game)
@@ -153,7 +170,7 @@ int process_input(Map *game)
 
 	switch(ch)
 	{
-		case -1:
+		case 'q':
 			printf("Giving up? You suck.\n");
 			return 0;
 			break;
@@ -164,7 +181,7 @@ int process_input(Map *game)
 			game->_(move)(game, SOUTH);
 			break;
 		case 'e':
-			game=>_(move)(game, EAST);
+			game->_(move)(game, EAST);
 			break;
 		case 'w':
 			game->_(move)(game, WEST);
@@ -175,7 +192,7 @@ int process_input(Map *game)
 		case 'l':
 			printf("You can go:\n");
 			if(game->location->north) printf("NORTH\n");
-			if(game->locaiton->south) printf("SOUTH\n");
+			if(game->location->south) printf("SOUTH\n");
 			if(game->location->east) printf("EAST\n");
 			if(game->location->west) printf("WEST\n");
 			break;
@@ -192,12 +209,12 @@ int main(int argc, char *argv[])
 	srand(time(NULL));
 
 	// make our map to work with
-	Map *game = NEW(map, "The Hall of the Minotaur.");
+	Map *game = NEW(Map, "The Hall of the Minotaur.");
 
 	printf("You enter the");
-	game->locaiton->_(describe)(game->location);
+	game->location->_(describe)(game->location);
 
-	whiel(process_input)
+	while(process_input(game))
 	{
 
 	}

@@ -3,17 +3,17 @@ CC = cc
 #compiler options
 CFLGAS=-Wall -g
 LDFLAGS=
-SOURCES= ex18.c
+SOURCES= ex19.c
 OBJECTS=$(SOURCES)
 EXECUTABLE=hello
 
-all: $(SOURCES) $(EXECUTABLE)
-#all: ex19
+#all: $(SOURCES) $(EXECUTABLE)
+all: ex19
 
-#ex19: object.o
+ex19: object.o
 
 $(EXECUTABLE):
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
 clean:
-	rm -f $(EXECUTABLE)
+	rm -f $(EXECUTABLE) *.o
